@@ -231,7 +231,7 @@ for T in T_list:
     nx.set_node_attributes(G,1,"state")
     # 在仿真开始前随机翻转10%的节点状态
     num_nodes = len(nodes)
-    num_flip_initial = max(1, int(0.2 * num_nodes))  # 至少翻转1个节点
+    num_flip_initial = max(1, int(0.2 * num_nodes))  # 随机翻转20%的节点
     random.seed(42)  # 设置种子
     selected_nodes = random.sample(nodes, num_flip_initial)
 
@@ -270,7 +270,7 @@ for T in T_list:
             G.nodes[node]['state'] *= -1
 
         # 每100步记录系统状态
-        if step % 100 == 0:
+        if step % 500 == 0:
             print(f"T={T}，已完成 {step / num_steps * 100:.1f}%")
             # 计算总能量
             total_energy = calculate_energy(G)
